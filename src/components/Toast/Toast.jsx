@@ -5,6 +5,7 @@ import {
   useRef,
   useState,
 } from "react";
+import styles from "./Toast.module.css";
 
 const ToastContext = createContext(null);
 
@@ -27,10 +28,16 @@ export function ToastProvider({ children }) {
   return (
     <ToastContext.Provider value={{ show }}>
       {children}
-      <div className="toast-container" aria-live="polite">
+      <div className={styles.toastContainer} aria-live="polite">
         {toasts.map((t) => (
-          <div key={t.id} className={`toast toast--${t.type}`} role="status">
-            <span className="toast__icon" aria-hidden="true">
+          <div
+            key={t.id}
+            className={`${styles.toast} ${
+              t.type === "error" ? styles.toastError : styles.toastSuccess
+            }`}
+            role="status"
+          >
+            <span className={styles.toastIcon} aria-hidden="true">
               {t.type === "error" ? "!" : "\u2713"}
             </span>
             {t.message}

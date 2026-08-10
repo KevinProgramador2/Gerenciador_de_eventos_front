@@ -1,0 +1,97 @@
+.containerCadastro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100dvh;
+  padding: 24px;
+  background: linear-gradient(135deg, #343435, #285fa7);
+  color: #f3f3f3;
+}
+
+.formularioCadastro {
+  display: flex;
+  width: 100%;
+  max-width: 420px;
+  padding: 40px 32px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  flex-direction: column;
+}
+
+.tituloCadastro {
+  margin: 0 0 4px;
+  font-size: 28px;
+  font-weight: 700;
+  color: #1a1a2e;
+}
+
+.pSubtitle {
+  margin: 0 0 24px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.alertError {
+  margin: 0 0 18px;
+  padding: 10px 14px;
+  font-size: 14px;
+  border-radius: 10px;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #b91c1c;
+}
+
+.btnCadastro {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  background: #4f46e5;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-bottom: 16px;
+}
+
+.btnCadastro:hover:not(:disabled) {
+  background: #4338ca;
+}
+
+.btnCadastro:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.pLogin {
+  text-align: center;
+  font-size: 14px;
+  color: #6b7280;
+  margin: 0;
+}
+
+.pLoginLink {
+  color: #4f46e5;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.pLoginLink:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  .containerCadastro {
+    padding: 16px;
+  }
+
+  .formularioCadastro {
+    padding: 24px 20px;
+  }
+
+  .tituloCadastro {
+    font-size: 24px;
+  }
+}

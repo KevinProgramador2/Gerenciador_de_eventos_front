@@ -1,27 +1,28 @@
 import { useState } from "react";
+
 import { Link, useNavigate } from "react-router-dom";
 import { api } from "../../services/api";
 import { session } from "../../services/auth";
-import { useToast } from "../../components/Toast";
+import { useAuth } from "../../contexts/AuthContext";
+import { useToast } from "../../components/Toast/Toast";
 import styles from "./Login.module.css";
 import Button from "../../components/Button";
-import "../../styles/global.css";
+import { useForm } from "../../hooks/useForm";
+
 export default function Login() {
   const navigate = useNavigate();
   const { show } = useToast();
+  const { login } = useAuth();
 
-  const saved = session.getCredentials();
-  const [form, setForm] = useState({
-    email: saved?.email ?? "",
-    senha: saved?.senha ?? "",
-    lembrar: Boolean(saved),
+  const salvo = session.getCredentials();
+  const { form, setForm, set } = useForm({
+    email: salvo?.email ?? "",
+    senha: salvo?.senha ?? "",
+    lembrar: Boolean(salvo),
   });
 
   const [erro, setErro] = useState("");
   const [loading, setLoading] = useState(false);
-
-  const set = (campo) => (e) =>
-    setForm((f) => ({ ...f, [campo]: e.target.value }));
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,7 +35,7 @@ export default function Login() {
     setLoading(true);
     try {
       const data = await api.login(form.email.trim(), form.senha);
-      session.saveSession(data);
+      login(data);
       if (form.lembrar) {
         session.saveCredentials({
           email: form.email.trim(),
