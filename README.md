@@ -1,6 +1,6 @@
 # Event Manager — Front-end Web
 
-Interface web desenvolvida em **React** para o gerenciamento de eventos, integrada à [Event Manager API](link-do-repo-backend).
+Interface web desenvolvida em **React** para o gerenciamento de eventos, integrada à [[Event Manager AP](https://github.com/KevinProgramador2/Gerenciador_de_eventos)].
 
 ![React](https://img.shields.io/badge/React-19-61DAFB?logo=react)
 ![Vite](https://img.shields.io/badge/Vite-8-646CFF?logo=vite)
