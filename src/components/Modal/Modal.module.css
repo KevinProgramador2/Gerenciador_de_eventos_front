@@ -12,7 +12,7 @@
 }
 
 .modal {
-  background: #fff;
+  background: #f9fcfd;
   border-radius: 16px;
   padding: 32px;
   width: 100%;
@@ -23,7 +23,7 @@
 .modal h2 {
   margin: 0 0 20px;
   font-size: 22px;
-  color: #1a1a2e;
+  color: #081421;
 }
 
 .modal label {
@@ -36,22 +36,22 @@
 .modal label span {
   font-size: 14px;
   font-weight: 600;
-  color: #374151;
+  color: #2b94a6;
 }
 
 .modal input {
   width: 100%;
   padding: 10px 14px;
   font-size: 15px;
-  border: 1px solid #d5d0e8;
+  border: 1px solid #007091;
   border-radius: 10px;
   outline: none;
   box-sizing: border-box;
 }
 
 .modal input:focus {
-  border-color: #7c3aed;
-  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.15);
+  border-color: #6bd7e5;
+  box-shadow: 0 0 0 3px rgba(107, 215, 229, 0.15);
 }
 
 .modalButtons {
@@ -71,19 +71,19 @@
 }
 
 .btnSalvar {
-  background: #4f46e5;
+  background: #0e7188;
   color: #fff;
 }
 
 .btnSalvar:hover {
-  background: #4338ca;
+  background: #04596a;
 }
 
 .btnCancelar {
-  background: #f3f4f6;
-  color: #374151;
+  background: #defff9;
+  color: #2b94a6;
 }
 
 .btnCancelar:hover {
-  background: #e5e7eb;
+  background: #c3e2ff;
 }

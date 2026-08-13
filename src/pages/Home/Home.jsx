@@ -10,8 +10,14 @@ import { useNavigate } from "react-router-dom";
 export default function Home() {
   const [eventos, setEventos] = useState([]);
   const [error, setError] = useState("");
+  const [busca, setBusca] = useState("");
   const [eventoEditando, setEventoEditando] = useState(null);
-  const [formEditar, setFormEditar] = useState({ data: "", localizacao: "" });
+  const [formEditar, setFormEditar] = useState({
+    nome: "",
+    data: "",
+    localizacao: "",
+    imagem: "",
+  });
   const [criandoEvento, setCriandoEvento] = useState(false);
   const [formCriar, setFormCriar] = useState({
     nome: "",
@@ -39,7 +45,12 @@ export default function Home() {
 
   function handleEditar(evento) {
     setEventoEditando(evento);
-    setFormEditar({ data: evento.data, localizacao: evento.localizacao });
+    setFormEditar({
+      nome: evento.nome,
+      data: evento.data,
+      localizacao: evento.localizacao,
+      imagem: evento.imagem,
+    });
   }
 
   function handleSalvarEdicao() {
@@ -49,8 +60,10 @@ export default function Home() {
           e.id === eventoEditando.id
             ? {
                 ...e,
+                nome: formEditar.nome,
                 data: formEditar.data,
                 localizacao: formEditar.localizacao,
+                imagem: formEditar.imagem,
               }
             : e,
         ),
@@ -80,10 +93,18 @@ export default function Home() {
       .catch((err) => setError(err.message));
   }, [admin?.adminId]);
 
+  const eventosFiltrados = eventos.filter((e) => {
+    const termo = busca.trim().toLowerCase();
+    if (!termo) return true;
+    return [e.nome, e.localizacao, e.data].some((campo) =>
+      (campo ?? "").toLowerCase().includes(termo),
+    );
+  });
+
   return (
     <main className={styles.containerHome}>
       <header className={styles.headerHome}>
-        <h1>Meus Eventos</h1>
+        <h1>Gerenciador de eventos</h1>
         <div className={styles.headerBotoes}>
           <button
             onClick={() => navigate("/cadastro")}
@@ -97,24 +118,52 @@ export default function Home() {
           >
             + Adicionar Evento
           </button>
-          <button className={styles.btnSair} onClick={handleLogout}>Sair</button>
+          <button className={styles.btnSair} onClick={handleLogout}>
+            Sair
+          </button>
         </div>
       </header>
 
+      <div className={styles.containerBuscar}>
+        <section className={styles.buscarEventos}>
+          <input
+            type="search"
+            placeholder="Buscar eventos"
+            value={busca}
+            onChange={(e) => setBusca(e.target.value)}
+          />
+        </section>
+      </div>
       <section className={styles.containerEventos}>
         {error && <p>{error}</p>}
-        {eventos.map((evento) => (
-          <CardEvento
-            key={evento.id}
-            evento={evento}
-            onEditar={handleEditar}
-            onExcluir={handleExcluir}
-          />
-        ))}
+        {eventosFiltrados.length === 0 ? (
+          <p className={styles.semResultados}>
+            {busca
+              ? "Nenhum evento encontrado para a busca."
+              : "Nenhum evento cadastrado ainda."}
+          </p>
+        ) : (
+          eventosFiltrados.map((evento) => (
+            <CardEvento
+              key={evento.id}
+              evento={evento}
+              onEditar={handleEditar}
+              onExcluir={handleExcluir}
+            />
+          ))
+        )}
       </section>
 
       {eventoEditando && (
         <Modal titulo="Editar Evento" onFechar={() => setEventoEditando(null)}>
+          <CampoInput
+            label="Nome do Evento"
+            value={formEditar.nome}
+            onChange={(e) =>
+              setFormEditar((f) => ({ ...f, nome: e.target.value }))
+            }
+          />
+
           <CampoInput
             label="Data"
             type="date"
@@ -129,6 +178,15 @@ export default function Home() {
             value={formEditar.localizacao}
             onChange={(e) =>
               setFormEditar((f) => ({ ...f, localizacao: e.target.value }))
+            }
+          />
+
+          <CampoInput
+            label="URL da Imagem"
+            placeholder="https://..."
+            value={formEditar.imagem}
+            onChange={(e) =>
+              setFormEditar((f) => ({ ...f, imagem: e.target.value }))
             }
           />
 

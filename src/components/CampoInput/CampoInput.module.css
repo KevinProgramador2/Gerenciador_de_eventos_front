@@ -8,7 +8,7 @@
 .campoLabel {
   font-size: 14px;
   font-weight: 600;
-  color: #374151;
+  color: #2b94a6;
 }
 
 .input {
@@ -17,8 +17,8 @@
   padding: 12px 14px;
   font-size: 15px;
   font-family: inherit;
-  color: #1a1a2e;
-  border: 1px solid #d5d0e8;
+  color: #081421;
+  border: 1px solid #007091;
   border-radius: 10px;
   outline: none;
   transition:
@@ -27,6 +27,6 @@
 }
 
 .input:focus {
-  border-color: #7c3aed;
-  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.15);
+  border-color: #6bd7e5;
+  box-shadow: 0 0 0 3px rgba(107, 215, 229, 0.15);
 }

@@ -4,8 +4,8 @@
   justify-content: center;
   min-height: 100dvh;
   padding: 24px;
-  background: linear-gradient(135deg, #343435, #4f46e5);
-  color: #f3f3f3;
+  background: linear-gradient(135deg, #f8fafc, #defff9);
+  color: #081421;
 }
 
 .formularioLogin {
@@ -13,7 +13,7 @@
   width: 100%;
   max-width: 420px;
   padding: 40px 32px;
-  background: #fff;
+  background: #f9fcfd;
   border-radius: 16px;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
   flex-direction: column;
@@ -29,13 +29,13 @@
   margin: 0 0 4px;
   font-size: 28px;
   font-weight: 700;
-  color: #1a1a2e;
+  color: #081421;
 }
 
 .pSubtitle {
   margin: 0 0 24px;
   font-size: 14px;
-  color: #6b7280;
+  color: #007091;
 }
 
 .campo {
@@ -49,7 +49,7 @@
 .campoSenha {
   font-size: 14px;
   font-weight: 600;
-  color: #374151;
+  color: #2b94a6;
 }
 
 .input {
@@ -58,8 +58,8 @@
   padding: 12px 14px;
   font-size: 15px;
   font-family: inherit;
-  color: #1a1a2e;
-  border: 1px solid #d5d0e8;
+  color: #081421;
+  border: 1px solid #007091;
   border-radius: 10px;
   outline: none;
   transition:
@@ -68,8 +68,8 @@
 }
 
 .input:focus {
-  border-color: #7c3aed;
-  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.15);
+  border-color: #6bd7e5;
+  box-shadow: 0 0 0 3px rgba(107, 215, 229, 0.15);
 }
 
 .checkbox {
@@ -78,7 +78,7 @@
   gap: 10px;
   margin-bottom: 22px;
   font-size: 14px;
-  color: #6b7280;
+  color: #007091;
   cursor: pointer;
   user-select: none;
 }
@@ -98,7 +98,7 @@
   font-size: 12px;
   font-weight: 700;
   color: transparent;
-  border: 1px solid #d5d0e8;
+  border: 1px solid #007091;
   border-radius: 5px;
   background: #fff;
   transition: all 0.2s;
@@ -106,8 +106,8 @@
 
 .checkbox input:checked + .checkboxBox {
   color: #fff;
-  background: #7c3aed;
-  border-color: #7c3aed;
+  background: #0e7188;
+  border-color: #0e7188;
 }
 
 .alertError {
@@ -115,9 +115,9 @@
   padding: 10px 14px;
   font-size: 14px;
   border-radius: 10px;
-  background: #fef2f2;
-  border: 1px solid #fecaca;
-  color: #b91c1c;
+  background: #defff9;
+  border: 1px solid #bf5b60;
+  color: #bf5b60;
 }
 
 .btnLogin {
@@ -126,7 +126,7 @@
   font-size: 16px;
   font-weight: 600;
   color: #fff;
-  background: #4f46e5;
+  background: #0e7188;
   border: none;
   border-radius: 12px;
   cursor: pointer;
@@ -135,7 +135,7 @@
 }
 
 .btnLogin:hover:not(:disabled) {
-  background: #4338ca;
+  background: #04596a;
 }
 
 .btnLogin:disabled {
@@ -146,12 +146,12 @@
 .pCadastro {
   text-align: center;
   font-size: 14px;
-  color: #6b7280;
+  color: #007091;
   margin: 0;
 }
 
 .pCadastrado {
-  color: #4f46e5;
+  color: #0e7188;
   font-weight: 600;
   text-decoration: none;
 }

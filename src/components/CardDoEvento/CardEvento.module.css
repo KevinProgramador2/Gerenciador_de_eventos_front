@@ -20,13 +20,13 @@
 .card h3 {
   margin: 0;
   font-size: 18px;
-  color: #1a1a2e;
+  color: #081421;
 }
 
 .card p {
   margin: 0;
   font-size: 14px;
-  color: #6b7280;
+  color: #007091;
 }
 
 .card button {
@@ -39,12 +39,12 @@
 }
 
 .card button:first-of-type {
-  background: #4f46e5;
+  background: #0e7188;
   color: #fff;
 }
 
 .card button:last-of-type {
-  background: #fef2f2;
-  color: #b91c1c;
-  border: 1px solid #fecaca;
+  background: #defff9;
+  color: #bf5b60;
+  border: 1px solid #bf5b60;
 }
