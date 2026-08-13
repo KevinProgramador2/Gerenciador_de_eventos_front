@@ -42,11 +42,14 @@
   background: rgba(255, 255, 255, 0.3);
 }
 
-.btnAdicionar {
+.onar {
   background: #00ecd9 !important;
   color: #003b49 !important;
 }
-
+.btnAdicionar {
+  display: flex;
+  flex-direction: row;
+}
 .btnAdicionar:hover {
   background: #6bd7e5 !important;
 }
@@ -103,6 +106,17 @@
 .btnCancelar:hover {
   background: #c3e2ff;
 }
+
+.alertError {
+  margin: 0 0 18px;
+  padding: 10px 14px;
+  font-size: 14px;
+  border-radius: 10px;
+  background: #defff9;
+  border: 1px solid #bf5b60;
+  color: #bf5b60;
+}
+
 .containerBuscar {
   display: flex;
   justify-content: center;

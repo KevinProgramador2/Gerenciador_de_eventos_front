@@ -19,6 +19,7 @@ export default function Home() {
     imagem: "",
   });
   const [criandoEvento, setCriandoEvento] = useState(false);
+  const [erroForm, setErroForm] = useState("");
   const [formCriar, setFormCriar] = useState({
     nome: "",
     data: "",
@@ -44,6 +45,7 @@ export default function Home() {
   }
 
   function handleEditar(evento) {
+    setErroForm("");
     setEventoEditando(evento);
     setFormEditar({
       nome: evento.nome,
@@ -54,6 +56,15 @@ export default function Home() {
   }
 
   function handleSalvarEdicao() {
+    if (
+      !formEditar.nome.trim() ||
+      !formEditar.data ||
+      !formEditar.localizacao.trim()
+    ) {
+      setErroForm("Preencha nome, data e localização.");
+      return;
+    }
+
     api.updateEvento(eventoEditando.id, formEditar).then(() => {
       setEventos((prev) =>
         prev.map((e) =>
@@ -74,6 +85,15 @@ export default function Home() {
 
   function handleCriarEvento() {
     if (!admin?.adminId) return;
+
+    if (
+      !formCriar.nome.trim() ||
+      !formCriar.data ||
+      !formCriar.localizacao.trim()
+    ) {
+      setErroForm("Preencha nome, data e localização.");
+      return;
+    }
 
     api
       .createEvento({ ...formCriar, adminId: admin.adminId })
@@ -114,9 +134,12 @@ export default function Home() {
           </button>
           <button
             className={styles.btnAdicionar}
-            onClick={() => setCriandoEvento(true)}
+            onClick={() => {
+              setErroForm("");
+              setCriandoEvento(true);
+            }}
           >
-            + Adicionar Evento
+            + Criar Evento
           </button>
           <button className={styles.btnSair} onClick={handleLogout}>
             Sair
@@ -156,6 +179,7 @@ export default function Home() {
 
       {eventoEditando && (
         <Modal titulo="Editar Evento" onFechar={() => setEventoEditando(null)}>
+          {erroForm && <p className={styles.alertError}>{erroForm}</p>}
           <CampoInput
             label="Nome do Evento"
             value={formEditar.nome}
@@ -182,7 +206,7 @@ export default function Home() {
           />
 
           <CampoInput
-            label="URL da Imagem"
+            label="URL da Imagem (opcional)"
             placeholder="https://..."
             value={formEditar.imagem}
             onChange={(e) =>
@@ -206,6 +230,7 @@ export default function Home() {
 
       {criandoEvento && (
         <Modal titulo="Novo Evento" onFechar={() => setCriandoEvento(false)}>
+          {erroForm && <p className={styles.alertError}>{erroForm}</p>}
           <CampoInput
             label="Nome do Evento"
             placeholder="Ex: Show de Rock"
@@ -234,7 +259,7 @@ export default function Home() {
           />
 
           <CampoInput
-            label="URL da Imagem"
+            label="URL da Imagem (opcional)"
             placeholder="https://..."
             value={formCriar.imagem}
             onChange={(e) =>
